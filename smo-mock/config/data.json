@@ -1,0 +1,59 @@
+[
+  {
+    "httpRequest": {
+      "path": "/smo/v1/ocloud_observer",
+      "method": "POST"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body" : {
+        "status": 200,
+        "result": "Welcome to mocked smo server!"
+      }
+    }
+  },
+
+  {
+    "httpRequest": {
+      "path": "/smo/v1/invalid_ocloud_observer",
+      "method": "POST"
+    },
+    "httpResponse": {
+      "statusCode": 500,
+      "body" : {
+        "status": 500,
+        "result": "The mocked smo server is invalid!"
+      }
+    }
+  },
+
+  {
+    "httpRequest" : {
+      "path" : "/smo/v1/o2ims_inventory_observer",
+      "method":"POST"
+    },
+    "httpResponse" : {
+      "statusCode": 200,
+      "body" : {
+        "status": 200,
+        "result": "This is mocked inventory change notification callback."
+      }
+    },
+    "priority" : 10
+  },
+
+  {
+    "httpRequest" : {
+      "path" : "/smo/v1/o2ims_alarm_observer",
+      "method":"POST"
+    },
+    "httpResponse" : {
+      "statusCode": 200,
+      "body" : {
+        "status": 200,
+        "result": "Welcome to mocked smo server alarm notification endpoint."
+      }
+    },
+    "priority" : 10
+  }
+]

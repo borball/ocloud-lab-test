@@ -1,0 +1,14 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: oran-operators
+  namespace: openshift-marketplace
+spec:
+  displayName: Red Hat ORAN Operators
+  image: quay.io/bzhai/oran-operator-catalog:v4.16
+  publisher: Red Hat
+  sourceType: grpc
+  updateStrategy:
+    registryPoll:
+      interval: 10m

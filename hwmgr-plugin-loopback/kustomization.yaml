@@ -1,0 +1,3 @@
+resources:
+  - vdu-pools/loopback-hwmgr.yaml
+  - vdu-pools/node-list-cm.yaml

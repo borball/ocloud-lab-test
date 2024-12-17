@@ -1,0 +1,8 @@
+---
+apiVersion: hwmgr-plugin.oran.openshift.io/v1alpha1
+kind: HardwareManager
+metadata:
+  name: loopback-hwmgr
+  namespace: oran-hwmgr-plugin
+spec:
+  adaptorId: loopback

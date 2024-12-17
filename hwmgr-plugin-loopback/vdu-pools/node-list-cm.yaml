@@ -1,0 +1,33 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: loopback-adaptor-nodelist
+  namespace: oran-hwmgr-plugin
+data:
+  resources: |
+    hwprofiles:
+      - profile-xr8620t-v1
+      - profile-e920t-v1
+    nodes:
+      sno171:
+        hwprofile: profile-xr8620t-v1
+        poolID: xr8620t-pool
+        bmc:
+          address: "idrac-VirtualMedia://192.168.18.171/redfish/v1/Systems/System.Embedded.1"
+          username-base64: cm9vdAo=
+          password-base64: UmVkaGF0ITEyMw==
+        interfaces:
+          - name: ens1f0
+            label: bootable-interface
+            macAddress: "50:7C:6F:53:D3:5C"
+      sno132:
+        hwprofile: profile-e920t-v1
+        poolID: general-pool
+        bmc:
+          address: "redfish-virtualmedia://192.168.14.132/redfish/v1/Systems/1"
+          username-base64: QWRtaW5pc3RyYXRvcg==
+          password-base64: UmVkaGF0MTIzIQ==
+        interfaces:
+          - name: ens1f0
+            label: bootable-interface
+            macAddress: "b4:96:91:d1:f2:34"

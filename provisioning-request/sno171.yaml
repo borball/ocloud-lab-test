@@ -1,0 +1,62 @@
+apiVersion: o2ims.provisioning.oran.org/v1alpha1
+kind: ProvisioningRequest
+metadata:
+  labels:
+    app.kubernetes.io/name: provisioningrequest
+    app.kubernetes.io/instance: provisioningrequest-sno171
+    app.kubernetes.io/part-of: oran-o2ims
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: oran-o2ims
+  name: provisioningrequest-sno171
+spec:
+  name: "sno171-cluster-provisioning"
+  description: "Provisioning request for setting up a Single Node OpenShift (SNO) on sno171"
+  templateName: cluster-template-vdu2-xr8620t
+  templateVersion: v1
+  templateParameters:
+    nodeClusterName: "sno171"
+    oCloudSiteId: "rh-bos2-sno171"
+    policyTemplateParameters:
+      lvs-id: "pci-0000:43:00.0-nvme-1"
+      cpufreq: "2700000"
+    clusterInstanceParameters:
+      clusterName: sno171
+      clusterImageSetNameRef: "openshift-4.16.25"
+      machineNetwork:
+        - cidr: "192.168.18.0/24"
+      extraLabels:
+        ManagedCluster:
+          cluster-version: "v4.16"
+          vdu-base: ""
+          configuration-version: vdu2-4.16-p2a1
+          scenario: "mb"
+          acc200: ""
+      nodes:
+        - hostName: sno171.outbound.vz.bos2.lab
+          rootDeviceHints:
+            deviceName: /dev/disk/by-path/pci-0000:43:00.0-nvme-1
+          nodeNetwork:
+            config:
+              dns-resolver:
+                config:
+                  server:
+                    - 192.168.58.15
+              interfaces:
+                - ipv4:
+                    address:
+                      - ip: 192.168.18.55
+                        prefix-length: 24
+                    dhcp: false
+                    enabled: true
+                  ipv6:
+                    dhcp: false
+                    enabled: false
+                  name: ens1f0
+                  type: ethernet
+              routes:
+                config:
+                  - destination: 0.0.0.0/0
+                    next-hop-address: 192.168.18.1
+                    next-hop-interface: ens1f0
+                    table-id: 254
+

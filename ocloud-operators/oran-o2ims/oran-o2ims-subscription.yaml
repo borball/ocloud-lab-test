@@ -1,0 +1,12 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: oran-o2ims
+  namespace: oran-o2ims
+spec:
+  channel: alpha
+  name: oran-o2ims
+  source: oran-operators
+  sourceNamespace: openshift-marketplace
+  installPlanApproval: Automatic

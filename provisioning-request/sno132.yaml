@@ -1,0 +1,72 @@
+apiVersion: o2ims.provisioning.oran.org/v1alpha1
+kind: ProvisioningRequest
+metadata:
+  labels:
+    app.kubernetes.io/name: provisioningrequest
+    app.kubernetes.io/instance: provisioningrequest-sno132
+    app.kubernetes.io/part-of: oran-o2ims
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: oran-o2ims
+  name: provisioningrequest-sno132
+spec:
+  name: "sno132-cluster-provisioning"
+  description: "Provisioning request for setting up a Single Node OpenShift (SNO) on sno132"
+  templateName: cluster-template-vdu2-general
+  templateVersion: v1
+  templateParameters:
+    nodeClusterName: "sno132"
+    oCloudSiteId: "rh-bos2-sno132"
+    policyTemplateParameters:
+      lvs-id: "pci-0000:c3:00.0-nvme-1"
+      cpufreq: "2700000"
+    clusterInstanceParameters:
+      clusterName: sno132
+      clusterImageSetNameRef: "openshift-4.16.25"
+      machineNetwork:
+        - cidr: "192.168.18.0/24"
+      extraLabels:
+        ManagedCluster:
+          cluster-version: "v4.16"
+          vdu-base: ""
+          configuration-version: vdu2-4.16-p2a1
+          scenario: "mb"
+          acc100: ""
+      nodes:
+      - hostName: sno132.outbound.vz.bos2.lab
+        rootDeviceHints:
+          deviceName: /dev/disk/by-path/pci-0000:c2:00.0-nvme-1
+        bmcCredentialsDetails:
+          username: QWRtaW5pc3RyYXRvcg==
+          password: UmVkaGF0MTIzIQ==
+        bmcAddress: redfish-virtualmedia://192.168.14.132/redfish/v1/Systems/1
+        bootMACAddress: b4:96:91:d1:f2:34
+        nodeNetwork:
+          interfaces:
+            - name: "ens1f0"
+              macAddress: "b4:96:91:d1:f2:34"
+          config:
+            dns-resolver:
+              config:
+                search:
+                  - outbound.vz.bos2.lab
+                server:
+                  - 192.168.58.15
+            interfaces:
+              - ipv4:
+                  address:
+                    - ip: 192.168.14.25
+                      prefix-length: 27
+                  dhcp: false
+                  enabled: true
+                ipv6:
+                  dhcp: false
+                  enabled: false
+                name: ens1f0
+                type: ethernet
+            routes:
+              config:
+                - destination: 0.0.0.0/0
+                  next-hop-address: 192.168.14.1
+                  next-hop-interface: ens1f0
+                  table-id: 254
+
