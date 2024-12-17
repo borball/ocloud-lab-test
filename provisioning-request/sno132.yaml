@@ -37,7 +37,7 @@ spec:
           deviceName: /dev/disk/by-path/pci-0000:c2:00.0-nvme-1
         bmcCredentialsDetails:
           username: QWRtaW5pc3RyYXRvcg==
-          password: UmVkaGF0MTIzIQ==
+          password: "UmVkaGF0MTIzIQ==" # notsecret
         bmcAddress: redfish-virtualmedia://192.168.14.132/redfish/v1/Systems/1
         bootMACAddress: b4:96:91:d1:f2:34
         nodeNetwork:
