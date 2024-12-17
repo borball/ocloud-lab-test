@@ -3,7 +3,7 @@
 ## OpenShift Cluster as ACM Hub
 
 A OpenShift cluster shall be created to act as an ACM hub, you can use whatever method to install the cluster, in our 
-test we used a SNO(Single Node OpenShift) installed with ABI(Agent Based Installer). Following operators will be used 
+test we used a SNO(Single Node OpenShift) installed with ABI(Agent Based Installer). Following operators used by ACM 
 have been installed together with the cluster deployment. 
 
 ```
@@ -15,15 +15,15 @@ openshift-gitops-operator.v1.14.1            Red Hat OpenShift GitOps           
 topology-aware-lifecycle-manager.v4.16.2     Topology Aware Lifecycle Manager             4.16.2
 ```
 
-More details can be found here: [Install OCP](sno-install/README.md).
+**Note**
+The LVM storage operator is used as the storage solution on the SNO used in the test.
+
+More details can be found here about the cluster setup: [Install OCP](sno-install/README.md).
 
 ## ACM Hub Configuration
 
-We need to have a persistent storage solution in order to create MultiClusterHub and Assisted Service, we chose LVM 
-storage operator which has been installed on the cluster mentioned above. 
-
-We need to create a LVMCluster, then we can create MultiClusterHub and AgentServiceConfig, some helper scripts can be 
-found here: [ACM Hub Setup](acm-setup/README.md)
+Next we create a LVMCluster which will provide the persistent storage and storageclass, then we can create 
+MultiClusterHub and AgentServiceConfig, some helper scripts can be found here: [ACM Hub Setup](acm-setup/README.md)
 
 ## ArgoCD and Github Repo integration
 
