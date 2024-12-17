@@ -28,5 +28,3 @@ multicluster-engine.v2.6.3                   multicluster engine for Kubernetes 
 openshift-gitops-operator.v1.14.1            Red Hat OpenShift GitOps                     1.14.1
 topology-aware-lifecycle-manager.v4.16.2     Topology Aware Lifecycle Manager             4.16.2
 ```
-
-## MultiClusterHub
