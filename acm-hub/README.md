@@ -1,4 +1,4 @@
-# ACM HUB
+# ACM Hub
 
 ## OpenShift Cluster as ACM Hub
 
