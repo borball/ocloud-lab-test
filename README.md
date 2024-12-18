@@ -1,4 +1,4 @@
-# ORAN O-CLoud Lab Test
+# ORAN O-Cloud Lab Test
 
 1. [ACM Hub Setup & Configuration](acm-hub/README.md)
 2. [OCloud Manager Operators](ocloud-operators/README.md)
