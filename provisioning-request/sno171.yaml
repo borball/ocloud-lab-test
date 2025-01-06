@@ -17,7 +17,7 @@ spec:
     nodeClusterName: "sno171"
     oCloudSiteId: "rh-bos2-sno171"
     policyTemplateParameters:
-      lvs-id: "pci-0000:43:00.0-nvme-1"
+      lvs-id: "pci-0000:44:00.0-nvme-1"
       cpufreq: "2700000"
     clusterInstanceParameters:
       clusterName: sno171
