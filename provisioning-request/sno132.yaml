@@ -11,7 +11,7 @@ metadata:
 spec:
   name: "sno132-cluster-provisioning"
   description: "Provisioning request for setting up a Single Node OpenShift (SNO) on sno132"
-  templateName: cluster-template-vdu2-general
+  templateName: cluster-template-vdu2-general-4-16-28
   templateVersion: v1
   templateParameters:
     nodeClusterName: "sno132"
