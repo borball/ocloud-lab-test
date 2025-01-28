@@ -1,6 +1,7 @@
 #!/bin/bash
 
-oran_operator_version=4.18
+oran_catalog_version=4.18
+oran_operator_version=4.18.0
 siteconfig_operator_version=2.13.0
 
 workspace=$(mktemp -d)
@@ -9,7 +10,7 @@ cd $workspace
 
 podman rmi quay.io/bzhai/oran-operator-catalog:v0.0.1
 podman rmi quay.io/bzhai/oran-operator-catalog:v0.0.2
-podman rmi quay.io/bzhai/oran-operator-catalog:v$oran_operator_version
+podman rmi quay.io/bzhai/oran-operator-catalog:v$oran_catalog_version
 
 #siteconfig operator
 git clone git@github.com:stolostron/siteconfig.git
@@ -45,7 +46,7 @@ cd oran-hwmgr-plugin
 podman rmi quay.io/bzhai/oran-hwmgr-plugin-bundle:$oran_operator_version
 make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman
 make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman
-opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v$oran_operator_version --bundles quay.io/bzhai/oran-hwmgr-plugin-bundle:$oran_operator_version --from-index quay.io/bzhai/oran-operator-catalog:v0.0.2
+opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v$oran_catalog_version --bundles quay.io/bzhai/oran-hwmgr-plugin-bundle:$oran_operator_version --from-index quay.io/bzhai/oran-operator-catalog:v0.0.2
 
 ##oran hwmgr test plugin
 #cd ..
@@ -57,7 +58,7 @@ opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-ope
 #make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin-test CONTAINER_TOOL=podman
 #opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v4.16 --bundles quay.io/bzhai/oran-hwmgr-plugin-test-bundle:v0.0.1 --from-index quay.io/bzhai/oran-operator-catalog:v0.0.3
 
-podman push quay.io/bzhai/oran-operator-catalog:v$oran_operator_version
+podman push quay.io/bzhai/oran-operator-catalog:v$oran_catalog_version
 
-oc-mirror list operators --catalog quay.io/bzhai/oran-operator-catalog:v$oran_operator_version
+oc-mirror list operators --catalog quay.io/bzhai/oran-operator-catalog:v$oran_catalog_version
 
