@@ -1,0 +1,84 @@
+{
+  "provisioningRequestId": "724db80d-11d8-4bac-9c23-2061022e041d",
+  "name": "sno171-cluster-provisioning",
+  "description": "Provisioning request for setting up a Single Node OpenShift (SNO) on sno171",
+  "templateName": "cluster-template-vdu2-xr8620t-4-16-25",
+  "templateVersion": "v1",
+  "templateParameters": {
+    "nodeClusterName": "sno171",
+    "oCloudSiteId": "rh-bos2-sno171",
+    "policyTemplateParameters": {
+      "lvs-id": "pci-0000:44:00.0-nvme-1",
+      "cpufreq": "2700000"
+    },
+    "clusterInstanceParameters": {
+      "clusterName": "sno171",
+      "machineNetwork": [
+        {
+          "cidr": "192.168.18.0/24"
+        }
+      ],
+      "extraLabels": {
+        "ManagedCluster": {
+          "cluster-version": "v4.16",
+          "vdu-base": "",
+          "configuration-version": "vdu2-4.16.25",
+          "scenario": "mb",
+          "acc200": ""
+        }
+      },
+      "nodes": [
+        {
+          "hostName": "sno171.outbound.vz.bos2.lab",
+          "rootDeviceHints": {
+            "deviceName": "/dev/disk/by-path/pci-0000:43:00.0-nvme-1"
+          },
+          "nodeNetwork": {
+            "config": {
+              "dns-resolver": {
+                "config": {
+                  "search": [
+                    "outbound.vz.bos2.lab"
+                  ],
+                  "server": [
+                    "192.168.58.15"
+                  ]
+                }
+              },
+              "interfaces": [
+                {
+                  "ipv4": {
+                    "address": [
+                      {
+                        "ip": "192.168.18.55",
+                        "prefix-length": 24
+                      }
+                    ],
+                    "dhcp": false,
+                    "enabled": true
+                  },
+                  "ipv6": {
+                    "dhcp": false,
+                    "enabled": false
+                  },
+                  "name": "ens1f0",
+                  "type": "ethernet"
+                }
+              ],
+              "routes": {
+                "config": [
+                  {
+                    "destination": "0.0.0.0/0",
+                    "next-hop-address": "192.168.18.1",
+                    "next-hop-interface": "ens1f0",
+                    "table-id": 254
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
