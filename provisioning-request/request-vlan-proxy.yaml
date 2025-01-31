@@ -1,0 +1,73 @@
+apiVersion: o2ims.provisioning.oran.org/v1alpha1
+kind: ProvisioningRequest
+metadata:
+  labels:
+    app.kubernetes.io/name: provisioningrequest
+    app.kubernetes.io/instance: provisioningrequest-sno148
+    app.kubernetes.io/part-of: oran-o2ims
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: oran-o2ims
+  name: 0194be7b-3532-7802-a7d9-1864550b2b5a
+spec:
+  name: "sno148-cluster-provisioning"
+  description: "Provisioning request for setting up a Single Node OpenShift (SNO) on sno148"
+  templateName: cluster-template-vdu2-xr8620t-4-16-25
+  templateVersion: v1
+  templateParameters:
+    nodeClusterName: "sno148"
+    oCloudSiteId: "rh-bos2-sno148"
+    policyTemplateParameters:
+      lvs-id: "pci-0000:44:00.0-nvme-1"
+      cpufreq: "2700000"
+    clusterInstanceParameters:
+      clusterName: sno148
+      machineNetwork:
+        - cidr: "2001:1b74:480:6138::/64"
+      extraLabels:
+        ManagedCluster:
+          cluster-version: "v4.16"
+          vdu-base: ""
+          configuration-version: vdu2-4.16.25
+          scenario: "mb"
+          acc200: ""
+      nodes:
+        - hostName: sno148.outbound.vz.bos2.lab
+          rootDeviceHints:
+            deviceName: /dev/disk/by-path/pci-0000:43:00.0-nvme-1
+          nodeNetwork:
+            config:
+              dns-resolver:
+                config:
+                  server:
+                    - 2001:1b74:20:8804::10
+                    - 2001:1b74:20:8804::11
+              interfaces:
+                - description: Using tagged-VLAN
+                  ipv4:
+                    enabled: false
+                  ipv6:
+                    enabled: true
+                    dhcp: false
+                    address:
+                      - ip: 2001:1b74:480:6138::47
+                        prefix-length: 64
+                  name: ens1f0.480
+                  state: up
+                  type: vlan
+                  vlan:
+                    base-iface: ens1f0
+                    id: 480
+              routes:
+                config:
+                  - destination: ::/0
+                    next-hop-address: 2001:1b74:480:6138::1
+                    next-hop-interface: ens1f0.480
+                    table-id: 254
+            interfaces:
+              - macAddress: b4:96:91:ad:7f:89
+                name: ens1f0
+
+      proxy:
+        httpProxy: http://[2001:1b74:480:6134::164]:3128
+        httpsProxy: http://[2001:1b74:480:6134::164]:3128
+        noProxy: ericsson.se,5050,6183,6385
