@@ -3,13 +3,13 @@
 1. Cluster with hardware template
 
 ```
-oc apply -s sno171.yaml
+oc apply -f sno171.yaml
 ```
    
 2. Cluster without hardware template
 
 ```
-oc apply -s sno132.yaml
+oc apply -f sno132.yaml
 ```
 3. Check status
 
