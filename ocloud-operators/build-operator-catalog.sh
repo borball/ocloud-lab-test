@@ -1,8 +1,8 @@
 #!/bin/bash
 
-oran_catalog_version=4.18
-oran_operator_version=4.18.0
-siteconfig_operator_version=2.13.0
+oran_catalog_version=4.18.0-20150210
+oran_operator_version=4.18.0-20150210
+siteconfig_operator_version=2.13.0-20150210
 
 workspace=$(mktemp -d)
 
