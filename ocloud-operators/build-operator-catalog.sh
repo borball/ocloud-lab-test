@@ -18,8 +18,8 @@ cd siteconfig
 
 podman rmi quay.io/bzhai/siteconfig-operator-bundle:v$siteconfig_operator_version
 
-make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/siteconfig-operator CONTAINER_TOOL=podman  
-make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/siteconfig-operator CONTAINER_TOOL=podman
+make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/siteconfig-operator CONTAINER_TOOL=podman VERSION=$siteconfig_operator_version
+make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/siteconfig-operator CONTAINER_TOOL=podman VERSION=$siteconfig_operator_version
 
 opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v0.0.1 --bundles quay.io/bzhai/siteconfig-operator-bundle:v$siteconfig_operator_version
 
@@ -32,8 +32,8 @@ cd oran-o2ims
 
 podman rmi quay.io/bzhai/oran-o2ims-operator-bundle:$oran_operator_version
 
-make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/oran-o2ims-operator CONTAINER_TOOL=podman
-make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-o2ims-operator CONTAINER_TOOL=podman
+make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/oran-o2ims-operator CONTAINER_TOOL=podman VERSION=$oran_operator_version
+make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-o2ims-operator CONTAINER_TOOL=podman VERSION=$oran_operator_version
 
 opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v0.0.2 --bundles quay.io/bzhai/oran-o2ims-operator-bundle:$oran_operator_version --from-index quay.io/bzhai/oran-operator-catalog:v0.0.1
 
@@ -44,8 +44,8 @@ cd ..
 git clone git@github.com:openshift-kni/oran-hwmgr-plugin.git
 cd oran-hwmgr-plugin
 podman rmi quay.io/bzhai/oran-hwmgr-plugin-bundle:$oran_operator_version
-make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman
-make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman
+make build docker-build docker-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman VERSION=$oran_operator_version
+make bundle bundle-build bundle-push IMAGE_TAG_BASE=quay.io/bzhai/oran-hwmgr-plugin CONTAINER_TOOL=podman VERSION=$oran_operator_version
 opm index add --container-tool podman --mode semver --tag quay.io/bzhai/oran-operator-catalog:v$oran_catalog_version --bundles quay.io/bzhai/oran-hwmgr-plugin-bundle:$oran_operator_version --from-index quay.io/bzhai/oran-operator-catalog:v0.0.2
 
 ##oran hwmgr test plugin
