@@ -12,7 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: policies-sub
-  project: ocloud-policiy-templates
+  project: ocloud-policies-templates
   source:
     path: git-setup/policies
     repoURL: git@github.com:borball/ocloud-manager-test.git
