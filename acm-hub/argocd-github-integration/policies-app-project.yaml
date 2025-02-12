@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: ocloud-policiy-templates
+  name: ocloud-policies-templates
   namespace: openshift-gitops
 spec:
   clusterResourceWhitelist:
