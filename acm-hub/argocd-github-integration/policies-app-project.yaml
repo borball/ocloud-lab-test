@@ -19,6 +19,8 @@ spec:
     server: '*'
   - namespace: 'oran*'
     server: '*'
+  - namespace: 'open-cluster-management*'
+    server: '*'
   namespaceResourceWhitelist:
   - group: ''
     kind: ConfigMap
