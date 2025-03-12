@@ -15,6 +15,12 @@ openshift-gitops-operator.v1.14.1            Red Hat OpenShift GitOps           
 topology-aware-lifecycle-manager.v4.16.2     Topology Aware Lifecycle Manager             4.16.2
 ```
 
+SiteConfig operator shall be enabled with command:
+
+```shell
+oc patch multiclusterhubs.operator.open-cluster-management.io multiclusterhub -n open-cluster-management --type json --patch '[{"op": "add", "path":"/spec/overrides/components/-", "value": {"name":"siteconfig","enabled": true}}]'
+```
+
 **Note**
 The LVM storage operator is used as the storage solution on the SNO used in the test.
 
