@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ssh-keygen -q -t ed25519 -C "github-repo" -f /tmp/github-ed25519 <<< $'\ny' >/dev/null 2>&1
-oc create -n openshift-gitops secret generic ocloud-manager-repo --from-file=sshPrivateKey=/tmp/github-ed25519 --from-literal=type=git --from-literal=url=git@github.com:borball/ocloud-manager-test.git --from-literal=insecure=true
+ssh-keygen -q -t ed25519 -C "github-repo" -f /tmp/github-ocloud-ed25519 <<< $'\ny' >/dev/null 2>&1
+oc create -n openshift-gitops secret generic ocloud-manager-repo --from-file=sshPrivateKey=/tmp/github-ocloud-ed25519 --from-literal=type=git --from-literal=url=git@github.com:borball/ocloud-manager-test.git --from-literal=insecure=true
 oc label -n openshift-gitops secret ocloud-manager-repo argocd.argoproj.io/secret-type=repository
 
 echo "sshPrivateKey has been added into ArgoCD repository."
